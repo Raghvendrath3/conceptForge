@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: conceptforge-api
+    env: docker
+    plan: free
+    rootDir: server
+    branch: main
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false

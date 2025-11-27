@@ -108,6 +108,16 @@ git push -u origin main
    - **Runtime**: `Docker`
    - **Instance Type**: `Free`
 
+### Option 2: Deploy with Blueprint (Recommended)
+
+1. Ensure you have pushed the `render.yaml` file to your repository.
+2. Go to [Render Dashboard](https://dashboard.render.com/)
+3. Click **"New +"** → **"Blueprint"**
+4. Connect your GitHub account and select your **ConceptForge** repository
+5. Render will automatically detect the configuration from `render.yaml`.
+6. You will be prompted to enter the environment variables (MONGO_URI, JWT_SECRET, etc.).
+7. Click **"Apply"**.
+
 ### 3.2 Add Environment Variables
 
 Click **"Advanced"** and add these environment variables:
