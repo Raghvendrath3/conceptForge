@@ -1,0 +1,16 @@
+node_modules
+npm-debug.log
+.env
+.env.local
+.git
+.gitignore
+*.md
+dist
+coverage
+.vscode
+.idea
+*.log
+test_output.txt
+debug_nodes.log
+server_startup.log
+test-ai.js
