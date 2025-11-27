@@ -1,6 +1,15 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Get the raw URL from env
+let rawUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// Normalize: remove trailing slash
+rawUrl = rawUrl.replace(/\/+$/, '');
+
+// Auto-append /api ONLY if it’s missing
+const API_URL = rawUrl.endsWith('/api') ? rawUrl : `${rawUrl}/api`;
+
+console.log("Using API URL:", API_URL);
 
 const api = axios.create({
   baseURL: API_URL,
@@ -20,8 +29,6 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    // Simple error handling for now. 
-    // In a real app, we'd handle refresh tokens here if 401.
     if (error.response?.status === 401) {
       localStorage.removeItem('accessToken');
       window.location.href = '/login';
